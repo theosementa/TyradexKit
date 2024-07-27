@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "Tyradex",
+    name: "TyradexKit",
     defaultLocalization: "en",
     platforms: [
         .iOS(.v15),
@@ -12,16 +12,16 @@ let package = Package(
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "Tyradex",
-            targets: ["Tyradex"]),
+            name: "TyradexKit",
+            targets: ["TyradexKit"]),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "Tyradex"),
+            name: "TyradexKit"),
         .testTarget(
-            name: "TyradexTests",
-            dependencies: ["Tyradex"]),
+            name: "TyradexKitTests",
+            dependencies: ["TyradexKit"]),
     ]
 )
