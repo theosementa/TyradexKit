@@ -12,6 +12,11 @@ public struct PokemonEvolutionMegaDetailed: Codable, Identifiable {
     public var orbe: String?
     public var sprites: PokemonSprite?
     
+    init(orbe: String? = nil, sprites: PokemonSprite? = nil) {
+        self.orbe = orbe
+        self.sprites = sprites
+    }
+    
     enum CodingKeys: String, CodingKey {
         case orbe
         case sprites

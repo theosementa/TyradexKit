@@ -11,6 +11,11 @@ public struct PokemonSpriteGMAX: Codable {
     private var jsonRegular: String?
     private var jsonShiny: String?
     
+    init(jsonRegular: String? = nil, jsonShiny: String? = nil) {
+        self.jsonRegular = jsonRegular
+        self.jsonShiny = jsonShiny
+    }
+    
     enum CodingKeys: String, CodingKey {
         case jsonRegular = "regular"
         case jsonShiny = "shiny"
