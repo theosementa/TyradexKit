@@ -18,13 +18,14 @@ extension PokemonRepository {
     @MainActor
     public func fetchPokemons() async {
         do {
-            let pokemons = try await NetworkService.shared.sendRequest(
+            for try await pokemon in NetworkService.shared.fetchStream(
                 apiBuilder: PokemonAPIRequester.fetchPokemons,
-                responseModel: [Pokemon].self
-            )
-            
-            self.pokemons = pokemons.sorted { $0.pokedexID ?? 0 < $1.pokedexID ?? 0 }
-            self.pokemons.removeFirst()
+                responseModel: Pokemon.self
+            ) {
+                if pokemon.pokedexID != 0 {
+                    self.pokemons.append(pokemon)
+                }
+            }
         } catch let error {
             if let networkError = error as? NetworkError {
                 print("⚠️ \(networkError)")

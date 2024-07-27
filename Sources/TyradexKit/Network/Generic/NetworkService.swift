@@ -10,6 +10,7 @@ import Foundation
 // Protocole
 public protocol NetworkServiceProtocol {
     func sendRequest<T: Decodable>(apiBuilder: APIRequestBuilder, responseModel: T.Type) async throws -> T
+    func fetchStream<T: Decodable>(apiBuilder: APIRequestBuilder, responseModel: T.Type) -> AsyncThrowingStream<T, Error>
 }
 
 // Implémentation du service de réseau
@@ -43,6 +44,22 @@ extension NetworkService {
         } catch {
             print("⚠️ PARSING ERROR : \(error.localizedDescription)")
             throw NetworkError.parsingError
+        }
+    }
+    
+    public func fetchStream<T: Decodable>(apiBuilder: APIRequestBuilder, responseModel: T.Type) -> AsyncThrowingStream<T, Error> {
+        return AsyncThrowingStream { continuation in
+            Task {
+                do {
+                    let results = try await sendRequest(apiBuilder: apiBuilder, responseModel: [T].self)
+                    for item in results {
+                        continuation.yield(item)
+                    }
+                    continuation.finish()
+                } catch {
+                    continuation.finish(throwing: error)
+                }
+            }
         }
     }
     
