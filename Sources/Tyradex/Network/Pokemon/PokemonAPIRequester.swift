@@ -7,16 +7,20 @@
 
 import Foundation
 
- enum PokemonAPIRequester: APIRequestBuilder {
+enum PokemonAPIRequester: APIRequestBuilder {
     case fetchPokemons
-    case fetchPokemon(pokemonID: Int)
+    case getPokemon(pokemonID: Int)
+    case regionOfPokemon(name: String, region: String)
+    case pokemonsOfGeneration(generation: String)
 }
 
 extension PokemonAPIRequester {
     public var path: String {
         switch self {
         case .fetchPokemons:                return NetworkPath.Pokemon.pokemon
-        case .fetchPokemon(let pokemonID):  return NetworkPath.Pokemon.specificPokemon(pokemonID: pokemonID)
+        case .getPokemon(let pokemonID):    return NetworkPath.Pokemon.specificPokemon(pokemonID: pokemonID)
+        case .regionOfPokemon(let name, let region): return NetworkPath.Pokemon.regionOfPokemon(name: name, region: region)
+        case .pokemonsOfGeneration(let generation):  return NetworkPath.Generation.pokemonsOfGeneration(generation: generation)
         }
     }
     

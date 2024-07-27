@@ -15,6 +15,15 @@ struct NetworkPath {
         static func specificPokemon(pokemonID: Int) -> String {
             return "/pokemon/\(pokemonID)"
         }
+        static func regionOfPokemon(name: String, region: String) -> String {
+            return "/pokemon/\(name)/\(region)"
+        }
+    }
+    
+    struct Generation {
+        static func pokemonsOfGeneration(generation: String) -> String {
+            return "/gen/\(generation)"
+        }
     }
     
 }
