@@ -11,4 +11,9 @@ public struct PokemonType: Codable, Identifiable {
     public var id: UUID = UUID()
     public var name: String?
     public var image: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case image
+    }
 }

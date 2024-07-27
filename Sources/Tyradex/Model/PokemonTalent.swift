@@ -11,4 +11,9 @@ public struct PokemonTalent: Codable, Identifiable {
     public var id: UUID = UUID()
     public var name: String?
     public var tc: Bool?
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case tc
+    }
 }
