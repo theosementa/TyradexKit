@@ -10,13 +10,13 @@ import Foundation
 public class PokemonRepository: ObservableObject {
     public static let shared = PokemonRepository()
     
-    @Published var pokemons: [Pokemon] = []
+    @Published public var pokemons: [Pokemon] = []
 }
 
 extension PokemonRepository {
     
     @MainActor
-    func fetchPokemons() async {
+    public func fetchPokemons() async {
         do {
             let pokemons = try await NetworkService.shared.sendRequest(
                 apiBuilder: PokemonAPIRequester.fetchPokemons,
