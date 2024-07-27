@@ -7,7 +7,8 @@
 
 import Foundation
 
-public struct PokemonResistance: Codable {
+public struct PokemonResistance: Codable, Identifiable {
+    public var id: UUID = UUID()
     public var name: String?
     public var multiplier: Double?
 }
