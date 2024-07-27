@@ -23,7 +23,7 @@ extension PokemonRepository {
                 responseModel: [Pokemon].self
             )
             
-            self.pokemons = pokemons.sorted { $0.pokedexID < $1.pokedexID }
+            self.pokemons = pokemons.sorted { $0.pokedexID ?? 0 < $1.pokedexID ?? 0 }
         } catch let error {
             if let networkError = error as? NetworkError {
                 print("⚠️ \(networkError)")

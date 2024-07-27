@@ -9,8 +9,8 @@ import Foundation
 
 public struct PokemonEvolutionMegaDetailed: Codable, Identifiable {
     public var id: UUID = UUID()
-    public var orbe: String
-    public var sprites: PokemonSprite
+    public var orbe: String?
+    public var sprites: PokemonSprite?
     
     enum CodingKeys: String, CodingKey {
         case orbe

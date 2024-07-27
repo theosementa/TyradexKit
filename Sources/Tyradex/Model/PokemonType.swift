@@ -8,6 +8,6 @@
 import Foundation
 
 public struct PokemonType: Codable {
-    public var name: String
-    public var image: String
+    public var name: String?
+    public var image: String?
 }

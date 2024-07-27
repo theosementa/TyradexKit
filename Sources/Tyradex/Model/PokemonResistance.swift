@@ -8,6 +8,6 @@
 import Foundation
 
 public struct PokemonResistance: Codable {
-    public var name: String
-    public var multiplier: Double
+    public var name: String?
+    public var multiplier: Double?
 }

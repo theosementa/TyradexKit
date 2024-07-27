@@ -8,6 +8,6 @@
 import Foundation
 
 public struct PokemonSexe: Codable {
-    public var male: Double
-    public var female: Double
+    public var male: Double?
+    public var female: Double?
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 public struct PokemonName: Codable {
-    public var fr: String
-    public var en: String
-    public var jp: String
+    public var fr: String?
+    public var en: String?
+    public var jp: String?
 }

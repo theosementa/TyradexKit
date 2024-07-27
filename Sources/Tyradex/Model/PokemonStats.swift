@@ -8,12 +8,12 @@
 import Foundation
 
 public struct PokemonStats: Codable {
-    public var hp: Int
-    public var atk: Int
-    public var def: Int
-    public var vit: Int
-    public var spe_atk: Int
-    public var spe_def: Int
+    public var hp: Int?
+    public var atk: Int?
+    public var def: Int?
+    public var vit: Int?
+    public var spe_atk: Int?
+    public var spe_def: Int?
     
     enum CodingKeys: String, CodingKey {
         case hp
@@ -26,6 +26,13 @@ public struct PokemonStats: Codable {
     
     // Computed var
     public var total: Int {
-        return (hp + atk + def + vit + spe_atk + spe_def)
+        var total: Int = 0
+        if let hp { total += hp }
+        if let atk { total += atk }
+        if let def { total += def }
+        if let vit { total += vit }
+        if let spe_atk { total += spe_atk }
+        if let spe_def { total += spe_def }
+        return total
     }
 }

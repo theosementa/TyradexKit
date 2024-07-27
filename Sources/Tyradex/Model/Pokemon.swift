@@ -9,11 +9,11 @@ import Foundation
 
 public struct Pokemon: Codable, Identifiable {
     public var id: UUID = UUID()
-    public var pokedexID: Int
-    public var generation: Int
-    public var category: String
-    public var name: PokemonName
-    public var sprites: PokemonSprite
+    public var pokedexID: Int?
+    public var generation: Int?
+    public var category: String?
+    public var name: PokemonName?
+    public var sprites: PokemonSprite?
     private var jsonTypes: [PokemonType]?
     private var jsonTalents: [PokemonTalent]?
     public var stats: PokemonStats?
@@ -28,7 +28,7 @@ public struct Pokemon: Codable, Identifiable {
     private var jsonForme: [PokemonForme]?
     
     enum CodingKeys: String, CodingKey {
-        case pokedexID = "pokedexId"
+        case pokedexID = "pokedex_id"
         case generation
         case category
         case name
@@ -49,13 +49,15 @@ public struct Pokemon: Codable, Identifiable {
     
     // Unwrapped
     public var nameLocalized: String {
-        if Locale.current.identifier.contains("fr") {
-            return name.fr
-        } else if Locale.current.identifier.contains("jp") {
-            return name.jp
-        } else {
-            return name.en
-        }
+        if let name {
+            if Locale.current.identifier.contains("fr") {
+                return name.fr ?? ""
+            } else if Locale.current.identifier.contains("jp") {
+                return name.jp ?? ""
+            } else {
+                return name.en ?? ""
+            }
+        } else { return "" }
     }
     public var types: [PokemonType] {
         if let jsonTypes { return jsonTypes } else { return [] }

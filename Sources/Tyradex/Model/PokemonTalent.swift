@@ -8,6 +8,6 @@
 import Foundation
 
 public struct PokemonTalent: Codable {
-    public var name: String
-    public var tc: Bool
+    public var name: String?
+    public var tc: Bool?
 }

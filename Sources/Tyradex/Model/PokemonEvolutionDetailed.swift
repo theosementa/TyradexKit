@@ -9,11 +9,11 @@ import Foundation
 
 public struct PokemonEvolutionDetailed: Codable, Identifiable {
     public var id: UUID = UUID()
-    public var pokedexID: Int
-    public var name: String
+    public var pokedexID: Int?
+    public var name: String?
     
     enum CodingKeys: String, CodingKey {
-        case pokedexID = "pokedexId"
+        case pokedexID = "pokedex_id"
         case name
     }
 }
