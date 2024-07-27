@@ -116,7 +116,7 @@ public struct Pokemon: Codable, Identifiable {
 }
 
 extension Pokemon {
-    static var preview: Pokemon {
+    static public var preview: Pokemon {
         return .init(
             pokedexID: 6,
             generation: 1,
