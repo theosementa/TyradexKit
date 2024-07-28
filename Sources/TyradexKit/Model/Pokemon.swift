@@ -116,7 +116,7 @@ extension Pokemon {
         if let jsonForme { return jsonForme } else { return [] }
     }
     
-    var spritesURLs: [URL] {
+    public var spritesURLs: [URL] {
         var array: [URL] = []
         if let sprites {
             if let regular = URL(string: sprites.regular) {
