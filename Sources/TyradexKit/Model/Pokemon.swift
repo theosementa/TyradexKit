@@ -66,8 +66,10 @@ public struct Pokemon: Codable, Identifiable {
         case jsonLevel100 = "level_100"
         case jsonForme = "forme"
     }
+}
+
+extension Pokemon {
     
-    // Unwrapped
     public var nameLocalized: String {
         if let name {
             if Locale.current.identifier.contains("fr") {
@@ -112,6 +114,28 @@ public struct Pokemon: Codable, Identifiable {
     }
     public var forme: [PokemonForme] {
         if let jsonForme { return jsonForme } else { return [] }
+    }
+    
+    var spritesURLs: [URL] {
+        var array: [URL] = []
+        if let sprites {
+            if let regular = URL(string: sprites.regular) {
+                array.append(regular)
+            }
+            if let shiny = URL(string: sprites.shiny) {
+                array.append(shiny)
+            }
+            if let gmax = sprites.gmax {
+                if let regular = URL(string: gmax.regular) {
+                    array.append(regular)
+                }
+                if let shiny = URL(string: gmax.shiny) {
+                    array.append(shiny)
+                }
+            }
+        }
+        
+        return array
     }
 }
 
