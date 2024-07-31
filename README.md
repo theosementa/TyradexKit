@@ -11,6 +11,8 @@ To integrate TyradexKit into your Xcode project using Swift Package Manager, fol
 5. Add the package to your target.
 
 ## Usage
+Example: https://github.com/theosementa/Tyradex
+<br><br>
 Once you have TyradexKit installed, you can start using it to fetch and display Pokémon data. Below are some basic examples to help you get started.
 
 <br>
